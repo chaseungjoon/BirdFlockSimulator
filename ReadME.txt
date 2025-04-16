@@ -19,3 +19,21 @@ Hand-crafted BOID algorithm in C++ using SFML
 * maxSpeed : Maximum speed for birds so they don't go haywire
 * addNoise : true if adding natural noise to birds movement
 * randomness : random movement level (advised to keep under 0.1)
+
+BOID Implementations
+
+* Alignment
+  A bird's "angle" is defined as atan(radians)
+  1. Calculate the average angle of the flock
+  2. Calculate the angle difference (average angle of flock - bird's angle)
+  3. Add -> angle difference * alignment Strength (0~1)  to the bird's current angle (without changing bird's speed)
+
+* Cohesion
+  1. Find the flock's center mass
+  2. Steer vector -> center mass - current position
+  3. Add steer vector * cohesion Strength (0~1) to current vector
+
+* Separation
+  1. If other come inside desired separation radius, repulse.
+  2. Repulse vector -> bird's position - other's position
+  3. Normalize repulse vector and add it accordingly
