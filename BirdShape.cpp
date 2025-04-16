@@ -140,13 +140,6 @@ void BirdShape::applyNoise()
 
 void BirdShape::Alignment(const std::vector<BirdShape>& flock)
 {
-    /*
-    A bird's "angle" is defined as atan(radians)
-    1. Calculate the average angle of the flock
-    2. Calculate the angle difference (average angle of flock - bird's angle)
-    3. Add -> angle difference * alignment Strength (0~1)  to the bird's current angle (without changing bird's speed)
-    */
-
     sf::Vector2f velocity = this->getVelocity();
     float birdAngle = std::atan2(velocity.y, velocity.x);
     float speed = std::sqrt(velocity.x * velocity.x + velocity.y * velocity.y);
@@ -173,12 +166,6 @@ void BirdShape::Alignment(const std::vector<BirdShape>& flock)
 
 void BirdShape::Cohesion(const std::vector<BirdShape>& flock)
 {
-    /*
-    1. Find the flock's center mass
-    2. Steer vector -> center mass - current position
-    3. Add steer vector * cohesion Strength (0~1) to current vector
-    */
-
     sf::Vector2f centerMass{0.f, 0.f};
     int count = 0;
 
@@ -202,11 +189,6 @@ void BirdShape::Cohesion(const std::vector<BirdShape>& flock)
 
 void BirdShape::Separation(const std::vector<BirdShape>& flock)
 {
-    /*
-    1. If other come inside desired separation radius, repulse.
-    2. Repulse vector -> bird's position - other's position
-    3. Normalize repulse vector and add it accordingly
-    */
     float desiredSeparation = config.desiredSeparation;
     float separationStrength = config.separationStrength;
     float maxSeparationForce = config.maxSeparationForce;
