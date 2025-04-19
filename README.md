@@ -30,7 +30,7 @@
 
 * desiredSeparation : Desired minimum distance for birds
 
-* axSeparationForce : Maximum separation force
+* maxSeparationForce : Maximum separation force
 
 * maxSpeed : Maximum speed for birds so they don't go haywire
 
